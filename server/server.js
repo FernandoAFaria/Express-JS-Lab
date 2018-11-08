@@ -15,15 +15,17 @@ app.use(bodyParser.urlencoded({extended: false}));
 
     //This will return any files in the public folder
 
-app.use('/', (req, res, next) => {
-    console.log(req.url);
-    next();
-})
+
+
 app.post('/submit', (req, res, next) => {
     let email = req.body.email;
     let pw = req.body.password;
-    fs.appendFileSync('text.log', `${email}, ${pw} \n`)
-    res.send('SUBMITTED')
+    let obj1 = JSON.stringify({
+        Email: email,
+        Password: pw
+    })
+    fs.appendFileSync('data.json', obj1)
+    res.send(`Account registered for ${email}.  Thank you!`)
     
 })
 

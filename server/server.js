@@ -25,7 +25,6 @@ app.post('/submit', (req, res, next) => {
     //This will grab the JSON file and load it into a variable.  Then it will push the input from the submit form and write out the file to disk
     let data = fs.readFileSync(path.join(__dirname, '../data.json'))
     let json = JSON.parse(data);
-    console.log(data)
 
     let email = req.body.email;
     let pw = req.body.password;
